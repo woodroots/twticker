@@ -1,0 +1,71 @@
+{
+    "name": "twticker",
+    "displayName": "twticker",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "ext",
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.twticker",
+                "title": "Twitter Ticker"
+            }
+        ],
+        "title": "twticker",
+        "configuration": {
+            "type": "object",
+            "title": "設定",
+            "properties": {
+                "twticker.account": {
+                    "type": "string",
+                    "default": "802nowonair",
+                    "description": "取得したいアカウントを入力",
+                    "scope": "resource"
+                },
+                "twticker.regexp": {
+                    "type": "string",
+                    "default": "\\[.*\\](.*)#.*",
+                    "description": "正規表現で取得したい部分を指定",
+                    "scope": "resource"
+                },
+                "twticker.interval": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "指定時間毎に更新します（単位：分）",
+                    "scope": "resource"
+                },
+                "twticker.prefix": {
+                    "type": "string",
+                    "default": "♪Now On Air♪",
+                    "description": "前に追加したい文字列",
+                    "scope": "resource"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.11.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
+        "request-promise": "^4.2.5"
+    }
+}
